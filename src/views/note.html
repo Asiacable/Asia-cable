@@ -1,0 +1,123 @@
+cnpm install vue-cli -g
+vue -V或者--version
+
+1、node 
+         cnpm
+2、webpack 
+3、vue
+
+安装vue项目
+   cnpm install vue-cli -g 全局安装vue环境
+   vue init webpack zimogod
+   默认安装   如果安装失败，则手动进入zimogod再安装  cd 项目名称
+   cnpm/npm install  下载项目依赖插件
+   npm run dev / npm start  启动本地服务器
+   localhost:8080
+
+ dependencies：插件 依赖的意思
+ 	下载到线上环境
+ 	npm install vue-router --save/-S 
+
+ devDependencies：开发插件 
+ 	下载本地开发时需要的插件
+ 	npm install vue-router --save-dev/-D
+
+ 请求数据的vue插件
+ cnpm install axios -S/--save
+ 
+ 安装sass插件，可以用sass进行编写css样式
+ cnpm install node-sass --save-dev
+ cnpm install sass-loader --save-dev
+
+
+ build:打包压缩的文件配置
+ config:webpack中服务器端口、主文件之类的配置
+ node_modules:项目依赖插件 不要随便打开 
+ src:前端人员主要进行开发的文件夹
+ static:静态文件存放的文件夹
+
+ src:
+ 	assets:存放图片的文件夹
+ 	components:写公共组件的文件夹
+ 	router:专门写路由跳转的文件夹
+ 	views:专门写页面组件的文件夹
+ 	App.vue:唯一的入口.vue文件
+ 	main.js:唯一的入口js文件
+
+vue-router:
+	router-view:显示内容容器标签
+	router-link:路由跳转标签，相当于a标签进行锚点跳转
+				有一个to属性，且有两种跳转方式，以字符串进行跳转无需加：，以对象进行跳转需在to上面加
+				：
+凡是涉及到页面的跳转，必须要在router文件夹下设置路由路径
+
+this.$router.push({
+	path:'/index',
+	name:'index'
+})
+
+this.$router.replace('/index')
+直接进行页面跳转，相当于重定向，破坏了浏览器history历史记录
+
+require('绝对路径'):就是拿依赖环境【路径】
+
+v-if:判断条件，控制显示或隐藏，隐藏时不加载文档流，性能较好
+v-show:控制显示隐藏，原理是display:none;加载文档流，应用更
+      广泛
+v-model:用于输入框、文本域等标签内部，属于数据双向绑定的输入
+      值
+v-else:用于复杂的条件判断语句，一定跟在v-if后面，配合使用，
+      没有v-if，就没有v-else，
+
+v-cloak:解决页面括号闪烁问题，原理是display:none;
+        vue1.x里面是加在body，vue2.x是加在id="app"标签上
+v-text：绑定文本内容，用于标签内部
+
+v-bind:绑定css样式，以及自定义属性、图片等一系列东西，绑定
+      样式不常用，仅做了解
+v-once:绑定事件属性，只执行一次
+v-for:循环数据，且循环DOM结构，循环自身所在的元素
+v-html:绑定DOM元素的内容，操作DOM的内容，不常用
+
+
+vue生命周期：
+   vue生命周期都是自执行函数，不用咱们去调用，而是有
+   生命的函数,依次执行
+
+   组件之间的引用不需要写路由
+
+   beforeCreate:      组件创建前
+   created：          组价创建后
+   beforeMount：      组件挂载前
+   mounted：          组件挂载中
+   beforeUpdate：     组件更新前
+   updated：          组件更新后
+   beforeDestroy：    组件销毁前
+   destroyed：        组件销毁后
+
+常用的生命周期
+      beforeMount(){
+       //为组价挂载到页面上之前做准备
+       console.log('我是挂载前')
+     },
+     mounted(){
+       //就是真实DOM挂载到了页面上,可以获取，访问、操作
+       console.log('我是挂载中')
+       // 自执行函数，挂载中的生命周期
+     },
+     beforeUpdate(){
+       console.log('我是更新前')
+     },
+     updated(){
+       console.log('我是更新后')
+     },
+
+  //hash :就是锚点跳转的标记 /#/index/admin，
+  //优点：只是做了标记跳转，不会向后台发送请求，
+  //相当于tab切换
+  
+  //history：就是浏览器的正规url跳转
+
+  几级嵌套路由，就在页面嵌套几个for循环
+
+  除了v-on:绑定事件简称为@，其余任何只有：的属性，前面都省略了v-bind
